@@ -1,0 +1,29 @@
+{
+  "name": "getfit",
+  "version": "1.0.0",
+  "description": "A simple app for fitness enthusiasts to keep track of their health data and get closer to achieving their goals.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dakshshah96/getfit.git"
+  },
+  "keywords": [
+    "fitness",
+    "goals",
+    "express",
+    "node.js",
+    "mongodb"
+  ],
+  "author": "Daksh Shah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dakshshah96/getfit/issues"
+  },
+  "homepage": "https://github.com/dakshshah96/getfit#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
