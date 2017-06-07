@@ -6,7 +6,7 @@ exports.addFitness = (req, res) => {
 };
 
 exports.createFitness = async (req, res) => {
-    const fitness = new Fitness(req.body);
-    await fitness.save();
+    const fitness = await (new Fitness(req.body)).save();
+    req.flash('success', `Successfully updated fitness data!`)
     res.redirect('/');
 };

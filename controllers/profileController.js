@@ -6,7 +6,7 @@ exports.addProfile = (req, res) => {
 };
 
 exports.createProfile = async (req, res) => {
-    const profile = new Profile(req.body);
-    await profile.save();
+    const profile = await (new Profile(req.body)).save();
+    req.flash('success', `Successfully updated the profile of <strong>${profile.name}</strong>!`)
     res.redirect('/');
 };
