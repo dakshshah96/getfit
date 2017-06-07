@@ -1,0 +1,9 @@
+extends layout
+
+include mixins/_profileCard
+block content
+    .inner
+        h2= title
+        .profiles
+            each profile in profiles
+                +profileCard(profile)

@@ -10,3 +10,9 @@ exports.createProfile = async (req, res) => {
     req.flash('success', `Successfully updated the profile of <strong>${profile.name}</strong>!`)
     res.redirect('/');
 };
+
+exports.getProfiles = async (req, res) => {
+    // query database for all profiles
+    const profiles = await Profile.find();
+    res.render('profiles', { title: 'Profiles', profiles });
+};

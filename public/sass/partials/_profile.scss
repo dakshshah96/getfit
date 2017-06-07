@@ -1,10 +1,10 @@
-.stores {
+.profiles {
   display:flex;
   flex-wrap:wrap;
   justify-content:space-between;
 }
 
-.store {
+.profile {
   background:white;
   margin: 10px 0;
   width:30%;
@@ -27,7 +27,7 @@
   }
 }
 
-.store__actions {
+.profile__actions {
   position: relative;
   z-index: 2;
   border-bottom: 1px solid rgba(0,0,0,0.2);
@@ -41,7 +41,7 @@
   justify-content: space-around;
 }
 
-.store__action {
+.profile__action {
   font-size: 10px;
   svg {
     width: 25px;
@@ -55,7 +55,7 @@
 }
 
 
-.store__hero {
+.profile__hero {
   position: relative;
   padding: 0 10px 0 10px;
   text-align: right;

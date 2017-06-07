@@ -1,0 +1,10 @@
+mixin profileCard(profile = {})
+    .profile
+        .profile__hero
+            .profile__actions
+                button soon
+            img(src=`/uploads/${profile.photo || 'profile.jpg'}`)
+            h2.title
+                a(href=`/profile/${profile.slug}`) #{profile.name}
+            .profile__details
+                p= profile.about.split(' ').slice(0, 25).join(' ')

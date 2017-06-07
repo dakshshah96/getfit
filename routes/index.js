@@ -10,6 +10,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 router.get('/', landingController.homePage);
 
 router.get('/add-profile', profileController.addProfile);
+router.get('/profiles', catchErrors(profileController.getProfiles));
 router.post('/add-profile', catchErrors(profileController.createProfile));
 
 router.get('/add-fitness', fitnessController.addFitness);
