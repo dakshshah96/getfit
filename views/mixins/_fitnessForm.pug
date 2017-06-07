@@ -1,0 +1,13 @@
+mixin fitnessForm(profile = {})
+    form(action="/add-fitness" method="POST" class="card")
+        label(for="water_drank") Water Drank (glasses)
+        input(type="number" name="water_drank")
+        - const activityChoices = ['Walk', 'Run', 'Swim', 'Basketball', 'Football', 'Tennis']
+        each choice in activityChoices
+            label(for=choice.toLowerCase()) #{choice} (minutes)
+            input(type="number" id=choice placeholder="0 minutes" name=choice.toLowerCase())
+        label(for="water_to_drink") Water Goal (glasses)
+        input(type="number" name="water_to_drink")
+        label(for="calories_to_burn") Calories Burn Goal (kcal)
+        input(type="number" name="calories_to_burn")
+        input(type="submit" value="Save →" class="button")

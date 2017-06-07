@@ -1,0 +1,24 @@
+mixin profileForm(profile = {})
+    form(action="/add-profile" method="POST" class="card")
+        label(for="name") Name
+        input(type="text" name="name")
+        label(for="gender") Gender
+        - const genderChoices = ['Male', 'Female']
+        ul.tags
+            each choice in genderChoices
+                .tag.tag__choice
+                    input(type="radio" id=choice value=choice name="gender")
+                    label(for=choice) #{choice}
+        label(for="age") Age
+        input(type="number" name="age")
+        label(for="about") About
+        textarea(name="about")
+        label(for="weight") Weight (kgs)
+        input(type="number" name="weight")
+        label(for="height") Height (cms)
+        input(type="number" name="height")
+        label(for="waist") Waist (cms)
+        input(type="number" name="waist")
+        label(for="fat_percent") Body Fat (%)
+        input(type="number" name="fat_percent")
+        input(type="submit" value="Save →" class="button")

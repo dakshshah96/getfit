@@ -1,0 +1,8 @@
+extends layout
+
+include mixins/_profileForm
+
+block content
+    .inner
+        h2= title
+        +profileForm()

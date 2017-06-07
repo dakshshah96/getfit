@@ -1,0 +1,11 @@
+extends layout
+
+include mixins/_fitnessForm
+
+block content
+    .inner
+        h4 Saved Fitness Data
+        p This is some placeholder text.
+        p Fitness currently stored in the database will be displayed here at a later stage.
+        h2= title
+        +fitnessForm()

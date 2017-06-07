@@ -3,14 +3,15 @@ mongoose.Promise = global.Promise;
 
 // schema for user profile
 const fitnessSchema = new mongoose.Schema({
-    activities: [{
-        activity: { type: String, required: true },
-        calories: { type: Number, default: 0 }
-    }],
-    calories_burnt: { type: Number, default: 0 },
-    water_drank: { type: Number, default: 0 },
-    calories_to_burn: { type: Number, default: 0 },
-    water_to_drink: { type: Number, default: 0 }
+    walk: { type: Number, default: 0 },
+    run: { type: Number, default: 0 },
+    swim: { type: Number, default: 0 },
+    basketball: { type: Number, default: 0 },
+    football: { type: Number, default: 0 },
+    tennis: { type: Number, default: 0 },
+    water_drank: { type: Number, required: true, default: 0 },
+    calories_to_burn: { type: Number, required: true, default: 0 },
+    water_to_drink: { type: Number, required: true, default: 0 }
 });
 
 module.exports = mongoose.model('Fitness', fitnessSchema);
