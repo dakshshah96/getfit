@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const landingController = require('../controllers/landingController'); 
 
-// Do work here
-router.get('/', (req, res) => {
-  res.send('Hey! It works!');
-});
+router.get('/', landingController.homePage);
 
 module.exports = router;
