@@ -1,10 +1,45 @@
 const mongoose = require('mongoose');
 const Profile = mongoose.model('Profile');
+const multer = require('multer');
+const jimp = require('jimp');
+const uuid = require('uuid');
+
+const multerOptions = {
+    storage: multer.memoryStorage(),
+    fileFilter(req, file, next) {
+        const isPhoto = file.mimetype.startsWith('image/');
+        if(isPhoto) {
+            next(null, true);
+        } else {
+            next({ message: 'That filetype isn\'t allowed!' }, false);
+        }
+    }
+};
 
 // render page for adding profile on receiving GET
 exports.addProfile = (req, res) => {
     res.render('editProfile', { title: 'Add Profile' });
 };
+
+// enable photo upload
+exports.upload = multer(multerOptions).single('photo');
+// work on uploaded image
+exports.resize = async (req, res, next) => {
+    // if no file
+    if (!req.file) {
+        next(); // skip
+        return;
+    }
+    const extension = req.file.mimetype.split('/')[1];
+    // rename uploaded file
+    req.body.photo = `${uuid.v4()}.${extension}`;
+    // resize photo
+    const photo = await jimp.read(req.file.buffer);
+    await photo.resize(800, jimp.AUTO);
+    await photo.write(`./public/uploads/${req.body.photo}`);
+    // continue
+    next();
+}
 
 // add submitted profile by POST to database
 exports.createProfile = async (req, res) => {
