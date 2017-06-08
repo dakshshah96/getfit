@@ -726,7 +726,11 @@ label {
   .profile--wide {
     width: 100%; }
   .profile__details {
-    padding: 2rem; }
+    padding: 2rem;
+    position: relative;
+    background: white;
+    margin-top: 20px;
+    z-index: 10; }
     .profile__details p {
       line-height: 1.2;
       margin-bottom: 0; }
