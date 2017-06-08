@@ -76,3 +76,10 @@ exports.updateProfile = async (req, res) => {
     req.flash('success', `Successfully updated profile of <strong>${profile.name}</strong>. <a href="/profiles/${profile.slug}">View Profile →</a>`);
     res.redirect(`/profiles/${profile._id}/edit`);
 };
+
+// individual profile page on GET at /profile/slug-here
+exports.getProfileBySlug = async (req, res, next) => {
+    const profile = await Profile.findOne({ slug: req.params.slug });
+    if (!profile) return next();
+    res.render('profile', { profile, title: profile.name });
+};

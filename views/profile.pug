@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    .single
+        .single__hero
+            img.single__image(src=`/uploads/${profile.photo || 'profile.jpg'}`)
+            h2.title.title--single
+                a(href=`profile/${profile.slug}`) #{profile.name}
+            .single__details
+                p Details will be added here soon. Styling changes pending.
+            //- .single__details
+            //-     p.single__location=`Joined ${profile.created}`
+            //-     p= profile.gender
+            //-     p= profile.age
+            //-     p= profile.about
+            //-     p= profile.weight
+            //-     p= profile.height
+            //-     p= profile.waist
+            //-     p= profile.fat_percent

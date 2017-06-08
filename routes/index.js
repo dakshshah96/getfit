@@ -11,18 +11,24 @@ router.get('/', landingController.homePage);
 
 // routers for profile stuff
 router.get('/add/profile', profileController.addProfile);
+
 router.get('/profiles', catchErrors(profileController.getProfiles));
+
 router.get('/profiles/:id/edit', catchErrors(profileController.editProfile));
+
 router.post('/add/profile',
     profileController.upload,
     catchErrors(profileController.resize),
     catchErrors(profileController.createProfile)
 );
+
 router.post('/add/profile/:id',
     profileController.upload,
     catchErrors(profileController.resize),
     catchErrors(profileController.updateProfile)
 );
+
+router.get('/profile/:slug', catchErrors(profileController.getProfileBySlug));
 
 // routers for fitness stuff
 router.get('/add/fitness', fitnessController.addFitness);

@@ -880,6 +880,7 @@ label {
 .single__details {
   background: white;
   position: relative;
+  z-index: 10;
   padding: 3rem;
   margin-top: -10rem;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15); }
