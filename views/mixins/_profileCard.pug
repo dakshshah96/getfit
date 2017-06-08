@@ -2,7 +2,9 @@ mixin profileCard(profile = {})
     .profile
         .profile__hero
             .profile__actions
-                button soon
+                .profile__action.profile__action--edit
+                    a(href=`/profiles/${profile._id}/edit`)
+                        != h.icon('pencil')
             img(src=`/uploads/${profile.photo || 'profile.jpg'}`)
             h2.title
                 a(href=`/profile/${profile.slug}`) #{profile.name}
