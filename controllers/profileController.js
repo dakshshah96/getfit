@@ -45,7 +45,7 @@ exports.resize = async (req, res, next) => {
 exports.createProfile = async (req, res) => {
     const profile = await (new Profile(req.body)).save();
     req.flash('success', `Successfully created the profile of <strong>${profile.name}</strong>!`)
-    res.redirect('/profiles');
+    res.redirect(`/profile/${profile.slug}`);
 };
 
 // list all profiles from database

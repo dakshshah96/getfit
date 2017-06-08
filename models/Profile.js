@@ -18,11 +18,17 @@ const profileSchema = new mongoose.Schema({
 });
 
 // pre-save slug
-profileSchema.pre('save', function(next) {
+profileSchema.pre('save', async function(next) {
     if(!this.isModified('name')) {
         return next();
     }
     this.slug = slug(this.name);
+    // check for duplicate slugs
+    const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+    const profilesWithSlug = await this.constructor.find({ slug: slugRegEx });
+    if (profilesWithSlug.length) {
+        this.slug = `${this.slug}-${profilesWithSlug.length + 1}`;
+    }
     next();
     // TODO make more resilient for unique slugs 
 });
