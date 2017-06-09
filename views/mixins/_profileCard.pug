@@ -3,7 +3,7 @@ mixin profileCard(profile = {})
         .profile__hero
             .profile__actions
                 .profile__action.profile__action--edit
-                    a(href=`/profiles/${profile._id}/edit`)
+                    a(href=`/profile/${profile._id}/edit`)
                         != h.icon('pencil')
             img(src=`/uploads/${profile.photo || 'profile.jpg'}`)
             h2.title

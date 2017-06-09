@@ -10,7 +10,7 @@ exports.addFitness = (req, res) => {
 exports.createFitness = async (req, res) => {
     const fitness = await (new Fitness(req.body)).save();
     req.flash('success', `Successfully created new fitness data!`)
-    res.redirect('/add/fitness');
+    res.redirect('/fitness/add');
 };
 
 // render page for editing fitness on receiving GET

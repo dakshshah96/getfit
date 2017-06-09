@@ -73,8 +73,8 @@ exports.updateProfile = async (req, res) => {
         runValidators: true
     }).exec();
 
-    req.flash('success', `Successfully updated profile of <strong>${profile.name}</strong>. <a href="/profiles/${profile.slug}">View Profile →</a>`);
-    res.redirect(`/profiles/${profile._id}/edit`);
+    req.flash('success', `Successfully updated profile of <strong>${profile.name}</strong>. <a href="/profile/${profile.slug}">View Profile →</a>`);
+    res.redirect(`/profile/${profile._id}/edit`);
 };
 
 // individual profile page on GET at /profile/slug-here

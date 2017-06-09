@@ -1,5 +1,5 @@
 mixin fitnessForm(fitness = {})
-    form(action=`/add/fitness/${fitness._id || ''}` method="POST" class="card")
+    form(action=`/fitness/add/${fitness._id || ''}` method="POST" class="card")
         label(for="water_drank") Water Drank (glasses)
         input(type="number" name="water_drank" value=fitness.water_drank)
         - const activityChoices = ['Walk', 'Run', 'Swim', 'Basketball', 'Football', 'Tennis']

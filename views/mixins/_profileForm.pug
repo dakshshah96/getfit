@@ -1,5 +1,5 @@
 mixin profileForm(profile = {})
-    form(action=`/add/profile/${profile._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+    form(action=`/profile/add/${profile._id || ''}` method="POST" class="card" enctype="multipart/form-data")
         label(for="name") Name
         input(type="text" name="name" value=profile.name)
         label(for="gender") Gender
