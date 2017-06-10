@@ -18,6 +18,12 @@ const profileSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.ObjectId, ref: 'User', required: 'You must supply a user!'}
 });
 
+// define indexes
+profileSchema.index({
+    name: 'text',
+    about: 'text'
+});
+
 // pre-save slug
 profileSchema.pre('save', async function(next) {
     if(!this.isModified('name')) {

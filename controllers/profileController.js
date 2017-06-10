@@ -103,3 +103,14 @@ exports.getProfileBySlug = async (req, res, next) => {
     if (!profile) return next();
     res.render('profile', { profile, title: profile.name });
 };
+
+exports.searchProfiles = async (req, res) => {
+    const profiles = await Profile
+    // find stores containing query
+    .find({ $text: { $search: req.query.q }}, { score: {$meta: 'textScore'}, name: 1, about: 1, slug: 1, _id: 0 })
+    // sort by text score
+    .sort({
+        score: { $meta: 'textScore' }
+    });
+    res.json(profiles);
+};
