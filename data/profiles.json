@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Daksh Shah",
+    "slug": "daksh-shah",
+    "gender": "male",
+    "age": 29,
+    "about": "Deserunt reprehenderit pariatur eiusmod pariatur labore. Esse qui et consequat in mollit culpa. Cillum aliqua non adipisicing aliquip velit sit nisi excepteur. Ullamco exercitation ipsum nostrud cupidatat cupidatat id ipsum occaecat mollit.\r\n",
+    "weight": 75,
+    "height": 162,
+    "waist": 106,
+    "fat_percent": 37,
+    "created": "Sun Sep 27 2015 16:51:04 GMT+0300 (+03)",
+    "photo": "a09221be-0721-4bc3-a565-9a822c615c83",
+    "user": "593bf4fa877e502a937f3907"
+  },
+  {
+    "name": "John Doe",
+    "slug": "john-doe",
+    "gender": "male",
+    "age": 34,
+    "about": "Officia occaecat labore aute exercitation. Fugiat incididunt anim nostrud sint voluptate consectetur ex fugiat nisi ipsum cupidatat sint adipisicing. Fugiat id laboris laboris elit non fugiat deserunt est labore nulla nisi nostrud ullamco.\r\n",
+    "weight": 75,
+    "height": 164,
+    "waist": 115,
+    "fat_percent": 31,
+    "created": "Tue Apr 19 2016 03:30:28 GMT+0300 (+03)",
+    "photo": "5f94dc57-160d-46cc-8138-22d84466308a",
+    "user": "593bf514877e502a937f3908"
+  },
+  {
+    "name": "Jane Doe",
+    "slug": "jane-doe",
+    "gender": "female",
+    "age": 23,
+    "about": "Veniam laboris exercitation nostrud labore exercitation Lorem sit aliqua fugiat dolor nisi incididunt minim aute. Ex do do cillum laboris mollit officia excepteur anim cupidatat ut. Veniam laboris ipsum cillum exercitation. Veniam et sit exercitation adipisicing ullamco cillum qui et.\r\n",
+    "weight": 79,
+    "height": 161,
+    "waist": 77,
+    "fat_percent": 32,
+    "created": "Sun Apr 23 2017 03:07:55 GMT+0300 (+03)",
+    "photo": "b2cca900-7517-42cd-99d1-ee7a8af5cc40",
+    "user": "593bf52c877e502a937f3909"
+  }
+]
