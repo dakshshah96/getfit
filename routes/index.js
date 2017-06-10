@@ -64,10 +64,14 @@ router.post('/account/reset/:token',
     catchErrors(authController.update)
 );
 
+// get hearts
+router.get('/hearts', authController.isLoggedIn, catchErrors(profileController.getHearts));
+
 /*
     API
 */
 
 router.get('/api/search', catchErrors(profileController.searchProfiles));
+router.post('/api/profiles/:id/heart', catchErrors(profileController.heartProfile));
 
 module.exports = router;

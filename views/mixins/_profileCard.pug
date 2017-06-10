@@ -2,6 +2,13 @@ mixin profileCard(profile = {})
     .profile
         .profile__hero
             .profile__actions
+                if user
+                    .profile__action.profile__action--heart
+                        form.heart(method="POST" action=`/api/profiles/${profile._id}/heart`)
+                            - const heartStrings = user.hearts.map(obj => obj.toString())
+                            - const heartClass = heartStrings.includes(profile._id.toString()) ? 'heart__button--hearted' : ''
+                            button.heart__button(type="submit" name="heart" class=heartClass)
+                                != h.icon('heart')
                 if user && profile.user.equals(user._id)
                     .profile__action.profile__action--edit
                         a(href=`/profile/${profile._id}/edit`)

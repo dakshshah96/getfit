@@ -20,10 +20,13 @@ html
                   span #{item.title}
           .nav__section.nav__section--search
             .search
-              input.search__input(type="text" placeholder="Search profiles e.g. John, Samantha..." name="search")
+              input.search__input(type="text" placeholder="Search profiles e.g. John.." name="search")
               .search__results
           .nav__section.nav__section--user
             if user
+              li.nav__item: a.nav__link(href="/hearts", class=(currentPath.startsWith('/hearts') ? 'nav__link--active' : ''))
+                != h.icon('heart')
+                span.heart-count #{user.hearts && user.hearts.length}
               li.nav__item: a.nav__link(href="/profile/me", class=(currentPath.startsWith('/top') ? 'nav__link--active' : ''))
                 != h.icon('top')
                 span Profile

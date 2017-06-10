@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Profile = mongoose.model('Profile');
+const User = mongoose.model('User');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
@@ -114,3 +115,30 @@ exports.searchProfiles = async (req, res) => {
     });
     res.json(profiles);
 };
+
+exports.heartProfile = async (req, res) => {
+    const hearts = req.user.hearts.map(obj => obj.toString());
+    const operator = hearts.includes(req.params.id) ? '$pull' : '$addToSet';
+    const user = await User.findByIdAndUpdate(req.user._id, {[operator]: { hearts: req.params.id }}, { new: true });
+    res.json(user);
+};
+
+exports.getHearts = async (req, res) => {
+    const profiles = await Profile.find({
+        _id: { $in: req.user.hearts }
+    });
+    res.render('profiles', { title: 'Hearted Profiles', profiles });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
