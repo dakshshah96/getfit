@@ -1,26 +1,25 @@
 const mongoose = require('mongoose');
 const Fitness = mongoose.model('Fitness');
 
-// render page for adding fitness on receiving GET
-exports.addFitness = (req, res) => {
-    res.render('editFitness', { title: 'Add Fitness Data' });
+// edit or add fitness
+exports.addEditFitness = async (req, res) => {
+    // query database for fitness data of user
+    const fitness = await Fitness.findOne({ user: req.user._id });
+    if (!fitness) {
+        // render form for adding new fitness data
+        res.render('editFitness', { title: 'Add Fitness Data' });
+    } else {
+        // render edit form for fitness editing
+        res.render('editFitness', { title: `Edit Fitness Data`, fitness });
+    }
 };
 
 // add submitted fitness by POST to database
 exports.createFitness = async (req, res) => {
+    req.body.user = req.user._id;
     const fitness = await (new Fitness(req.body)).save();
     req.flash('success', `Successfully created new fitness data!`)
     res.redirect('/fitness/add');
-};
-
-// render page for editing fitness on receiving GET
-exports.editFitness = async (req, res) => {
-    // find fitness from given id
-    const fitness = await Fitness.findOne({ _id: req.params.id });
-    // confirm this is users fitness (TODO: COMING SOON!!)
-
-    // render edit form for fitness editing
-    res.render('editFitness', { title: `Edit ${fitness.name}`, fitness })
 };
 
 // update fitness data in database on receiving POST
@@ -32,5 +31,17 @@ exports.updateFitness = async (req, res) => {
     }).exec();
 
     req.flash('success', `Successfully updated fitness data!`);
-    res.redirect(`/fitness/${fitness._id}/edit`);
+    res.redirect(`/fitness/add`);
+};
+
+// show fitness data of logged in user
+exports.showFitness = async (req, res) => {
+    const fitness = await Fitness.findOne({ user: req.user._id });
+    if(!fitness) {
+        // render form for adding new fitness data
+        res.render('editFitness', { title: 'Add Fitness Data' });
+    } else {
+        // display fitness data
+        res.render('fitness', { title: `Fitness Data for ${req.user.name}`, fitness });
+    }
 };

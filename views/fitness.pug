@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .inner
+        h2= title
+        p Minutes spent walking: #{fitness.walk}
+        p Minutes spent running: #{fitness.run}
+        p Minutes spent swimming: #{fitness.swim}
+        p Minutes spent playing basketball: #{fitness.basketball}
+        p Minutes spent playing football: #{fitness.football}
+        p Minutes spent playing tennis: #{fitness.tennis}
+        p Glasses of water drank: #{fitness.water_drank}
+        p Total calories burnt goal: #{fitness.calories_to_burn}
+        p Water goal: #{fitness.water_to_drink}
+        p
+            a(href=`fitness/add`) Edit Your Fitness Goals & Data

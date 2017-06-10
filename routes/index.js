@@ -15,6 +15,8 @@ router.get('/', landingController.homePage);
 router.get('/profile/add', authController.isLoggedIn, profileController.addProfile);
 
 router.get('/profiles', catchErrors(profileController.getProfiles));
+// redirect to logged in profile page
+router.get('/profile/me', authController.isLoggedIn, catchErrors(profileController.myProfile));
 
 router.get('/profile/:id/edit', catchErrors(profileController.editProfile));
 
@@ -33,10 +35,10 @@ router.post('/profile/add/:id',
 router.get('/profile/:slug', catchErrors(profileController.getProfileBySlug));
 
 // routers for fitness stuff
-router.get('/fitness/add', authController.isLoggedIn, fitnessController.addFitness);
-router.get('/fitness/:id/edit', catchErrors(fitnessController.editFitness));
+router.get('/fitness/add', authController.isLoggedIn, catchErrors(fitnessController.addEditFitness));
 router.post('/fitness/add', catchErrors(fitnessController.createFitness));
 router.post('/fitness/add/:id', catchErrors(fitnessController.updateFitness));
+router.get('/fitness', authController.isLoggedIn, catchErrors(fitnessController.showFitness));
 
 // routes for login and signup
 router.get('/login', userController.loginForm);

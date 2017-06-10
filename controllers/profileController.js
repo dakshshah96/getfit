@@ -43,6 +43,7 @@ exports.resize = async (req, res, next) => {
 
 // add submitted profile by POST to database
 exports.createProfile = async (req, res) => {
+    req.body.user = req.user._id;
     const profile = await (new Profile(req.body)).save();
     req.flash('success', `Successfully created the profile of <strong>${profile.name}</strong>!`)
     res.redirect(`/profile/${profile.slug}`);
@@ -55,12 +56,31 @@ exports.getProfiles = async (req, res) => {
     res.render('profiles', { title: 'Profiles', profiles });
 };
 
+// redirect /profile/me to profile page of user
+exports.myProfile = async (req, res) => {
+    // find profile from user id
+    const profile = await Profile.findOne({ user: req.user._id });
+    if (!profile) {
+        // add profile if not present
+        res.render('editProfile', { title: 'Add Profile' });
+    } else {
+        // redirect to profile slug
+        res.redirect(`/profile/${profile.slug}`);
+    }
+};
+
+const confirmUser = (profile, user) => {
+    if (user == undefined || !profile.user.equals(user._id)) {
+        throw Error('You can edit only your own profile! Please log in to the correct account.');
+    }
+};
+
 // render page for editing profile on receiving GET
 exports.editProfile = async (req, res) => {
     // find profile from given id
     const profile = await Profile.findOne({ _id: req.params.id });
-    // confirm this is users profile (TODO: COMING SOON!!)
-
+    // confirm this is users profile
+    confirmUser(profile, req.user);
     // render edit form for profile editing
     res.render('editProfile', { title: `Edit ${profile.name}`, profile })
 };
@@ -79,7 +99,7 @@ exports.updateProfile = async (req, res) => {
 
 // individual profile page on GET at /profile/slug-here
 exports.getProfileBySlug = async (req, res, next) => {
-    const profile = await Profile.findOne({ slug: req.params.slug });
+    const profile = await Profile.findOne({ slug: req.params.slug }).populate('user');
     if (!profile) return next();
     res.render('profile', { profile, title: profile.name });
 };

@@ -4,6 +4,8 @@ include mixins/_profileCard
 block content
     .inner
         h2= title
+        if (!user)
+            p Join others like you on GetFit!
         .profiles
             each profile in profiles
                 +profileCard(profile)

@@ -14,7 +14,8 @@ const profileSchema = new mongoose.Schema({
     waist: { type: Number, required: 'Please enter your waist size!', default: 0 },
     fat_percent: { type: Number, required: 'Please enter your body fat percentage!', default: 0 },
     created: { type: Date, default: Date.now },
-    photo: { type: String }
+    photo: { type: String },
+    user: { type: mongoose.Schema.ObjectId, ref: 'User', required: 'You must supply a user!'}
 });
 
 // pre-save slug
