@@ -27,10 +27,10 @@ html
               li.nav__item: a.nav__link(href="/hearts", class=(currentPath.startsWith('/hearts') ? 'nav__link--active' : ''))
                 != h.icon('heart')
                 span.heart-count #{user.hearts && user.hearts.length}
-              li.nav__item: a.nav__link(href="/profile/me", class=(currentPath.startsWith('/top') ? 'nav__link--active' : ''))
+              li.nav__item: a.nav__link(href="/profile/me", class=(currentPath.startsWith('/profile/') ? 'nav__link--active' : ''))
                 != h.icon('top')
                 span Profile
-              li.nav__item: a.nav__link(href="/fitness", class=(currentPath.startsWith('/cog') ? 'nav__link--active' : ''))
+              li.nav__item: a.nav__link(href="/fitness", class=(currentPath.startsWith('/fitness') ? 'nav__link--active' : ''))
                 != h.icon('cog')
                 span Fitness
               li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))
