@@ -5,11 +5,18 @@ block content
         .single__hero
             img.single__image(src=`/uploads/${profile.photo || 'profile.jpg'}`)
             h2.title.title--single
-                a(href=`profile/${profile.slug}`) #{profile.name}
+                a(href=`/profile/${profile.slug}`) #{profile.name}
     .single__details.inner
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem, harum. Officiis quaerat debitis quibusdam, culpa eius expedita odio nulla libero tempore sint dignissimos. Ut, aspernatur ipsam nobis accusantium quaerat!
-        p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae molestiae voluptas sequi, veniam nobis aliquam autem, reiciendis, consequatur illo aspernatur nemo, fugit earum optio veritatis aliquid non animi voluptates totam.
-        p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate culpa aspernatur, accusamus quas, numquam maxime. Impedit assumenda nihil quaerat. Exercitationem sint, quos cupiditate magnam veniam nihil soluta libero sunt aspernatur!
+        - let firstName = profile.name.split(' ')[0]
+        h3 About #{firstName}
+        p <strong>#{profile.gender}, #{profile.age} years old</strong>
+        p= profile.about
+        - var dd = profile.created.getDate();
+        - var mm = profile.created.getMonth() + 1;
+        - var yyyy = profile.created.getFullYear();
+        p <strong>#{firstName} is enjoying GetFit since #{`${mm}/${dd}/${yyyy}`}.</strong>
+        if (!user)
+            a(href="/register") Sign up today →
 
             //- .single__details
             //-     p.single__location=`Joined ${profile.created}`
