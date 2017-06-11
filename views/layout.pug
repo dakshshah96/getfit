@@ -54,21 +54,22 @@ html
                   button.flash__remove(onClick="this.parentElement.remove()") &times;
     .content
       block content
-
-    block footer
-      footer
-        hr
-        p 
-          | Coded with 
-          span.heart ❤ 
-          | by 
-          a(href="https://daksh.me") Daksh Shah
-        p
-          a(href="https://github.com/dakshshah96") GitHub
-          |  • 
-          a(href="https://www.linkedin.com/in/dakshshah") LinkedIn
-          |  • 
-          a(href="https://twitter.com/daksh_shah") Twitter
+    
+    if (currentPath != '/')
+      block footer
+        footer
+          hr
+          p 
+            | Coded with 
+            span.heart ❤ 
+            | by 
+            a(href="https://daksh.me") Daksh Shah
+          p
+            a(href="https://github.com/dakshshah96") GitHub
+            |  • 
+            a(href="https://www.linkedin.com/in/dakshshah") LinkedIn
+            |  • 
+            a(href="https://twitter.com/daksh_shah") Twitter
 
     block scripts
       script(src="/dist/App.bundle.js")

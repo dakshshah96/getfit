@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .landing-wrap
+        section.hero
+            h2.no-mar This is
+            img(src="../images/icons/logo.svg")
+            p A simple app to track activities, fitness levels and find others like you.
+            if (!user)
+                a(href="/profiles" class="btn-more") Profiles
+                a(href="/login" class="btn-more") Login
+                a(href="/register" class="btn-more") Register
+            else
+                a(href="/profile/me" class="btn-more") Profile
+                a(href="/fitness" class="btn-more") Fitness Data
+                a(href="/account" class="btn-more") Account

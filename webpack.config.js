@@ -12,6 +12,12 @@ const autoprefixer = require('autoprefixer');
   We only have a single entry point (a .js file) and everything is required from that js file
 */
 
+// // image rule
+// const images = {
+//   test: /\.(png|jpg)$/,
+//   loader: 'file-loader'
+// };
+
 // This is our JavaScript rule that specifies what to do with .js files
 const javascript = {
   test: /\.(js)$/, // see how we match anything that ends in `.js`? Cool

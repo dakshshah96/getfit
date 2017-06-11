@@ -1218,4 +1218,52 @@ pre.error {
   line-height: 3;
   white-space: pre-line; }
 
+.landing-wrap {
+  margin: 0 auto; }
+
+section.hero {
+  height: 100vh;
+  padding: 50px;
+  text-align: center;
+  color: white;
+  background-color: #545da9;
+  background-image: linear-gradient(to right, #4776e6, #8e54e9);
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
+
+section.hero p {
+  font-size: 3rem; }
+
+@media (max-width: 900px) {
+  .inner {
+    padding: 0; } }
+
+h2.no-mar {
+  margin: 0;
+  margin-bottom: 10px; }
+
+a.btn-more {
+  background-color: white;
+  color: #1976D2;
+  margin-right: 20px;
+  padding: 10px 8px;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2rem;
+  display: inline-block;
+  vertical-align: top;
+  transition: color 1s; }
+
+a.btn-more:hover {
+  color: #1565C0;
+  cursor: pointer; }
+
+a.btn-more:active {
+  border-bottom-width: 2px;
+  margin-top: 2px; }
+
 /*# sourceMappingURL=style.css.map*/

@@ -9,7 +9,7 @@ const authController = require('../controllers/authController');
 
 const { catchErrors } = require('../handlers/errorHandlers');
 
-router.get('/', landingController.homePage);
+router.get('/', landingController.landingPage);
 
 // routers for profile stuff
 router.get('/profile/add', authController.isLoggedIn, profileController.addProfile);
