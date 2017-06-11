@@ -2,15 +2,99 @@ extends layout
 
 block content
     .inner
-        h2= title
-        p Minutes spent walking: #{fitness.walk}
-        p Minutes spent running: #{fitness.run}
-        p Minutes spent swimming: #{fitness.swim}
-        p Minutes spent playing basketball: #{fitness.basketball}
-        p Minutes spent playing football: #{fitness.football}
-        p Minutes spent playing tennis: #{fitness.tennis}
-        p Glasses of water drank: #{fitness.water_drank}
-        p Total calories burnt goal: #{fitness.calories_to_burn}
-        p Water goal: #{fitness.water_to_drink}
+        h2=title
         p
-            a(href=`fitness/add`) Edit Your Fitness Goals & Data
+            a(href=`fitness/add`) Update fitness data or goals →
+        h3 Your Goals
+        .goal-data
+            .goal
+                img(src="/images/icons/fitness/water_drank.png")
+                .goal__title
+                    p Water
+                .goal__details
+                    p Glasses Drank: #{fitness.water_drank} glasses
+                    p Goal: #{fitness.water_to_drink} glasses
+                    - let waterPercent = Math.round(fitness.water_drank / fitness.water_to_drink * 100)
+                    p Achieved: #{waterPercent}%
+                    p
+                        if (waterPercent >= 100)
+                            span.success Wow, you're amazing!
+                        else
+                            span.failure Don't worry, you'll get there!
+            .goal
+                img(src="/images/icons/fitness/calories.png")
+                .goal__title
+                    p Calories
+                .goal__details
+                    - let totalCal = ((fitness.walk * 170/60) + (fitness.run * 476/60) + (fitness.swim * 493/60) + (fitness.basketball * 204/30) + (fitness.football * 612/60) + (fitness.tennis * 408/60)).toFixed(2)
+                    - let calPercent = Math.round(totalCal / fitness.calories_to_burn * 100)
+                    p Total Calories Burnt: #{totalCal}
+                    p Goal: #{fitness.calories_to_burn}
+                    p Achieved: #{calPercent}%
+                    p
+                        if (calPercent >= 100)
+                            span.success Wow, you're amazing!
+                        else
+                            span.failure Don't worry, you'll get there!
+        h3 Activity Data
+        .fitness-data
+            .activity
+                img(src="/images/icons/fitness/walking.png")
+                .activity__title
+                    p Walking
+                .activity__details
+                    p Time Spent: #{fitness.walk} minutes
+                    p Calories burnt: #{(fitness.walk * 170/60).toFixed(2)} kcal
+                .activity__readmore
+                    p
+                        a(href="http://www.health.harvard.edu/staying-healthy/5-surprising-benefits-of-walking") Read more on walking →
+            .activity
+                img(src="/images/icons/fitness/running.png")
+                .activity__title
+                    p Running
+                .activity__details
+                    p Time Spent: #{fitness.run} minutes
+                    p Calories burnt: #{(fitness.run * 476/60).toFixed(2)} kcal
+                .activity__readmore
+                    p
+                        a(href="https://www.livestrong.com/article/500212-why-is-running-important/") Read more on running →
+            .activity
+                img(src="/images/icons/fitness/swimming.png")
+                .activity__title
+                    p Swimming
+                .activity__details
+                    p Time Spent: #{fitness.swim} minutes
+                    p Calories burnt: #{(fitness.swim * 493/60).toFixed(2)} kcal
+                .activity__readmore
+                    p
+                        a(href="http://www.swimming.org/justswim/8-benefits-of-swimming/") Read more on swimming →
+            .activity
+                img(src="/images/icons/fitness/basketball.png")
+                .activity__title
+                    p Basketball
+                .activity__details
+                    p Time Spent: #{fitness.basketball} minutes
+                    p Calories burnt: #{(fitness.basketball * 204/30).toFixed(2)} kcal
+                .activity__readmore
+                    p
+                        a(href="http://www.healthfitnessrevolution.com/top-10-health-benefits-basketball/") Read more on basketball →
+            .activity
+                img(src="/images/icons/fitness/football.png")
+                .activity__title
+                    p Football
+                .activity__details
+                    p Time Spent: #{fitness.football} minutes
+                    p Calories burnt: #{(fitness.football * 612/60).toFixed(2)} kcal
+                .activity__readmore
+                    p
+                        a(href="https://www.betterhealth.vic.gov.au/health/healthyliving/soccer-health-benefits") Read more on football →
+            .activity
+                img(src="/images/icons/fitness/tennis.png")
+                .activity__title
+                    p Tennis
+                .activity__details
+                    p Time Spent: #{fitness.tennis} minutes
+                    p Calories burnt: #{(fitness.tennis * 408/60).toFixed(2)} kcal
+                .activity__readmore
+                    p
+                        a(href="https://www.betterhealth.vic.gov.au/health/healthyliving/tennis-health-benefits") Read more on tennis →

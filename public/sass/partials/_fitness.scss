@@ -1,0 +1,84 @@
+.fitness-data {
+  display:flex;
+  flex-wrap:wrap;
+  text-align: center;
+  justify-content:space-between;
+}
+
+.activity {
+  background:white;
+  margin: 10px 0;
+  width:30%;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: $shad;
+  &__title {
+    p {
+      line-height: 1.2;
+      font-size: 3rem;
+      margin-bottom: 0;
+    }
+  }
+  &__details {
+    p {
+        line-height: 2;
+    }
+  }
+  &__readmore {
+    a {
+        color: gray;
+    }
+  }
+  @media all and (max-width: 850px) {
+    width: 48%;
+  }
+  @media all and (max-width: 550px) {
+    width: 100%;
+  }
+}
+
+.goal-data {
+  display:flex;
+  flex-wrap:wrap;
+  text-align: center;
+  justify-content:space-between;
+}
+
+.goal {
+  background:white;
+  margin: 10px 0;
+  width:45%;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: $shad;
+  &__title {
+    p {
+      line-height: 1.2;
+      font-size: 3rem;
+      margin-bottom: 0;
+    }
+  }
+  &__details {
+    p {
+        line-height: 2;
+    }
+  }
+  &__readmore {
+    a {
+        color: gray;
+    }
+  }
+  @media all and (max-width: 550px) {
+    width: 100%;
+  }
+}
+
+span.success {
+    font-weight: bold;
+    color: green;
+}
+
+span.failure {
+    font-weight: bold;
+    color: red;
+}
