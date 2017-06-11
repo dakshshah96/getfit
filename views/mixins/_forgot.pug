@@ -2,5 +2,5 @@ mixin forgotForm()
     form.form(action="/account/forgot" method="POST")
         h2 Forgot Password?
         label(for="email") Email Address
-        input(type="email" name="email")
+        input(type="email" name="email" required)
         input.button(type="submit" value="Reset Password")

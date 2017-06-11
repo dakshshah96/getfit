@@ -19,7 +19,7 @@ exports.createFitness = async (req, res) => {
     req.body.user = req.user._id;
     const fitness = await (new Fitness(req.body)).save();
     req.flash('success', `Successfully created new fitness data!`)
-    res.redirect('/fitness/add');
+    res.redirect('/fitness');
 };
 
 // update fitness data in database on receiving POST
@@ -31,7 +31,7 @@ exports.updateFitness = async (req, res) => {
     }).exec();
 
     req.flash('success', `Successfully updated fitness data!`);
-    res.redirect(`/fitness/add`);
+    res.redirect(`/fitness`);
 };
 
 // show fitness data of logged in user

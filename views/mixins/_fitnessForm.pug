@@ -1,13 +1,13 @@
 mixin fitnessForm(fitness = {})
     form(action=`/fitness/add/${fitness._id || ''}` method="POST" class="card")
         label(for="water_drank") Water Drank (glasses)
-        input(type="number" name="water_drank" value=fitness.water_drank)
+        input(type="number" name="water_drank" placeholder="0" value=(fitness.water_drank || 0) required)
         - const activityChoices = ['Walk', 'Run', 'Swim', 'Basketball', 'Football', 'Tennis']
         each choice in activityChoices
             label(for=choice.toLowerCase()) #{choice} (minutes)
-            input(type="number" id=choice placeholder="0 minutes" name=choice.toLowerCase() value=fitness[`${choice.toLowerCase()}`])
+            input(type="number" id=choice placeholder="0" name=choice.toLowerCase() value=(fitness[`${choice.toLowerCase()}`] || 0) required)
         label(for="water_to_drink") Water Goal (glasses)
-        input(type="number" name="water_to_drink" value=fitness.water_to_drink)
+        input(type="number" name="water_to_drink" placeholder="0" value=(fitness.water_to_drink || 0) required)
         label(for="calories_to_burn") Calories Burn Goal (kcal)
-        input(type="number" name="calories_to_burn" value=fitness.calories_to_burn)
+        input(type="number" name="calories_to_burn" placeholder="0" value=(fitness.calories_to_burn || 0) required)
         input(type="submit" value="Save →" class="button")

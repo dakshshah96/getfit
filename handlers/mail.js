@@ -30,10 +30,7 @@ exports.send = async (options) => {
     });
     
     sg.API(request, function(error, response) {
-      console.log('NEW RESET MAIL SENT!');
-      console.log(response.statusCode);
-      console.log(response.body);
-      console.log(response.headers);
+      console.log('Password reset email sent!');
     })
 
     return;

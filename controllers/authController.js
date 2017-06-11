@@ -29,14 +29,14 @@ const mail = require('../handlers/mail');
 exports.login = passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true,
-    successRedirect: '/profiles',
+    successRedirect: '/',
     successFlash: 'You\'re now logged in!'
 });
 
 exports.logout = (req, res) => {
     req.logout();
     req.flash('success', 'You\'ve logged out successfully! 👋');
-    res.redirect('/profiles');
+    res.redirect('/');
 };
  
 exports.isLoggedIn = (req, res, next) => {

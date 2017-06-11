@@ -17,10 +17,25 @@ const multerOptions = {
     }
 };
 
-// render page for adding profile on receiving GET
-exports.addProfile = (req, res) => {
-    res.render('editProfile', { title: 'Add Profile' });
+// edit or add profile
+exports.addEditProfile = async (req, res) => {
+    // query database for fitness data of user
+    const profile = await Profile.findOne({ user: req.user._id });
+    if (!profile) {
+        // render form for adding new profile
+        res.render('editProfile', { title: 'Add Profile' });
+    } else {
+        // confirm this is users profile
+        confirmUser(profile, req.user);
+        // render edit form for profile editing
+        res.render('editProfile', { title: `Edit ${profile.name}'s Profile`, profile });
+    }
 };
+
+// // render page for adding profile on receiving GET
+// exports.addProfile = (req, res) => {
+//     res.render('editProfile', { title: 'Add Profile' });
+// };
 
 // enable photo upload
 exports.upload = multer(multerOptions).single('photo');
@@ -63,6 +78,7 @@ exports.myProfile = async (req, res) => {
     const profile = await Profile.findOne({ user: req.user._id });
     if (!profile) {
         // add profile if not present
+        req.flash('error', `You don't have a profile yet! Add one now.`);
         res.render('editProfile', { title: 'Add Profile' });
     } else {
         // redirect to profile slug
@@ -76,15 +92,15 @@ const confirmUser = (profile, user) => {
     }
 };
 
-// render page for editing profile on receiving GET
-exports.editProfile = async (req, res) => {
-    // find profile from given id
-    const profile = await Profile.findOne({ _id: req.params.id });
-    // confirm this is users profile
-    confirmUser(profile, req.user);
-    // render edit form for profile editing
-    res.render('editProfile', { title: `Edit ${profile.name}`, profile })
-};
+// // render page for editing profile on receiving GET
+// exports.editProfile = async (req, res) => {
+//     // find profile from given id
+//     const profile = await Profile.findOne({ _id: req.params.id });
+//     // confirm this is users profile
+//     confirmUser(profile, req.user);
+//     // render edit form for profile editing
+//     res.render('editProfile', { title: `Edit ${profile.name}`, profile })
+// };
 
 // update profile in database on receiving POST
 exports.updateProfile = async (req, res) => {
@@ -94,8 +110,8 @@ exports.updateProfile = async (req, res) => {
         runValidators: true
     }).exec();
 
-    req.flash('success', `Successfully updated profile of <strong>${profile.name}</strong>. <a href="/profile/${profile.slug}">View Profile →</a>`);
-    res.redirect(`/profile/${profile._id}/edit`);
+    req.flash('success', `Successfully updated profile of <strong>${profile.name}</strong>!`);
+    res.redirect(`/profile/${profile.slug}`);
 };
 
 // individual profile page on GET at /profile/slug-here
@@ -129,16 +145,3 @@ exports.getHearts = async (req, res) => {
     });
     res.render('profiles', { title: 'Hearted Profiles', profiles });
 };
-
-
-
-
-
-
-
-
-
-
-
-
-

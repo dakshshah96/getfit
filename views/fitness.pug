@@ -12,9 +12,9 @@ block content
                 .goal__title
                     p Water
                 .goal__details
-                    p Glasses Drank: #{fitness.water_drank} glasses
+                    p Glasses Drank: #{fitness.water_drank}
                     p Goal: #{fitness.water_to_drink} glasses
-                    - let waterPercent = Math.round(fitness.water_drank / fitness.water_to_drink * 100)
+                    - let waterPercent = fitness.water_to_drink > 0 ? Math.round(fitness.water_drank / fitness.water_to_drink * 100) : 0
                     p Achieved: #{waterPercent}%
                     p
                         if (waterPercent >= 100)
@@ -27,7 +27,7 @@ block content
                     p Calories
                 .goal__details
                     - let totalCal = ((fitness.walk * 170/60) + (fitness.run * 476/60) + (fitness.swim * 493/60) + (fitness.basketball * 204/30) + (fitness.football * 612/60) + (fitness.tennis * 408/60)).toFixed(2)
-                    - let calPercent = Math.round(totalCal / fitness.calories_to_burn * 100)
+                    - let calPercent = fitness.calories_to_burn > 0 ? Math.round(totalCal / fitness.calories_to_burn * 100) : 0
                     p Total Calories Burnt: #{totalCal}
                     p Goal: #{fitness.calories_to_burn}
                     p Achieved: #{calPercent}%

@@ -12,26 +12,20 @@ const { catchErrors } = require('../handlers/errorHandlers');
 router.get('/', landingController.landingPage);
 
 // routers for profile stuff
-router.get('/profile/add', authController.isLoggedIn, profileController.addProfile);
-
+router.get('/profile/add', authController.isLoggedIn, catchErrors(profileController.addEditProfile));
 router.get('/profiles', catchErrors(profileController.getProfiles));
 // redirect to logged in profile page
 router.get('/profile/me', authController.isLoggedIn, catchErrors(profileController.myProfile));
-
-router.get('/profile/:id/edit', catchErrors(profileController.editProfile));
-
 router.post('/profile/add',
     profileController.upload,
     catchErrors(profileController.resize),
     catchErrors(profileController.createProfile)
 );
-
 router.post('/profile/add/:id',
     profileController.upload,
     catchErrors(profileController.resize),
     catchErrors(profileController.updateProfile)
 );
-
 router.get('/profile/:slug', catchErrors(profileController.getProfileBySlug));
 
 // routers for fitness stuff

@@ -5,7 +5,7 @@ block content
         form.form(method="POST")
             h2 Reset Password
             label(for="password") Password
-            input(type="password" name="password")
+            input(type="password" name="password" required)
             label(for="password-confirm") Confirm Password
-            input(type="password" name="password-confirm")
+            input(type="password" name="password-confirm" required)
             input.button(type="submit" value="Reset Password →")

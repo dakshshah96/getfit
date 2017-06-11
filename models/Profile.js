@@ -37,7 +37,6 @@ profileSchema.pre('save', async function(next) {
         this.slug = `${this.slug}-${profilesWithSlug.length + 1}`;
     }
     next();
-    // TODO make more resilient for unique slugs 
 });
 
 module.exports = mongoose.model('Profile', profileSchema);

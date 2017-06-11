@@ -15,15 +15,8 @@ block content
         - var mm = profile.created.getMonth() + 1;
         - var yyyy = profile.created.getFullYear();
         p <strong>#{firstName} is enjoying GetFit since #{`${mm}/${dd}/${yyyy}`}.</strong>
-        if (!user)
-            a(href="/register") Sign up today →
-
-            //- .single__details
-            //-     p.single__location=`Joined ${profile.created}`
-            //-     p= profile.gender
-            //-     p= profile.age
-            //-     p= profile.about
-            //-     p= profile.weight
-            //-     p= profile.height
-            //-     p= profile.waist
-            //-     p= profile.fat_percent
+        p
+            if (!user)
+                a(href="/register") Sign up today to get your profile →
+            else
+                a(href="/profile/add") Edit your profile →
