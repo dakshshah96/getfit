@@ -682,7 +682,7 @@ label {
     .nav__link--logo svg {
       width: 100px; } }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 720px) {
   .nav {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
@@ -708,7 +708,7 @@ label {
       .nav__section--user svg {
         display: none; }
   .nav__item {
-    width: 33.333333%; }
+    width: 50%; }
   .nav__link {
     width: 100%; }
     .nav__link svg {

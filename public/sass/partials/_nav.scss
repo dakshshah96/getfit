@@ -74,7 +74,7 @@
   }
 }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 720px) {
   .nav {
     flex-wrap:wrap;
     &__section {
@@ -105,7 +105,7 @@
       }
     }
     &__item {
-      width: 33.333333%;
+      width: 50%;
     }
     &__link {
       width: 100%;
