@@ -1,9 +1,0 @@
-language: node_js
-node_js: node
-deploy:
-  provider: heroku
-  api_key:
-    secure: tR/4WRwGc27cGDayoTter7WDWGDpi4/zq2vqwv9Mwfz8aT2y0Cr8og5sQMqR06FfOz6NmSlmjv7yL0SMBppDDrbfEgMKUsq6Q8FVNm0BIoPpArTi0i89so4zRoB7ocDJ8lsjHi85Fa+1UoEzZ6NhgDi4Q8hU/bDNT4PsNvDmUoxILJ5k2vl8po8Iv4+r4HaHCP7wtCgBTvSHujtFhqIqalOMe7YdqSEtOOCkIeVg1DoU6gt+1EfIbk49ZpGzT1S+lPwzFcXD0/UAwW9x/CNDvlexPgA0H7tGKixZuU6vwMtuRLr3Hg7NcPdVcG2ETXQU2P3gf7kYPf8M8rq9KgarJUxyXjO95Z1tmv4co/8LWLCs5lRdFNGebPvWTJ1jIRRbwmLiuNv1A0UnBTluAP60Rr6WELsC/9cFh4FwKQ5cbDB83F6KYtQaOnBWoBrUONNADAGUQ7qd8yUOiHz9o7J33N5T37GiNva+KlicAUUSfbVLKzOt9s6+F5/JYyBx1w9ACSr8uzTwRE80EEPv/GtuS7H6jBx/cDcOgHtioIZ6Shneol5rQYlwK04vvow/fOUVTePTMAT5tywD0Il2FwX97dUi1sH/IBH8XtM7yPPN/+/tLJ2bN/Px3nIalIxi6CxCyQYOhKbmhudx6bygl3loYe6uhGAb/OlLAm+wHH3NndY=
-  app: rocky-temple-86834
-  on:
-    repo: dakshshah96/getfit

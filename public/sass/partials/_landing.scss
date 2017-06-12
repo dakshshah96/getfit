@@ -57,3 +57,37 @@ a.btn-more:active {
     border-bottom-width: 2px;
     margin-top: 2px;
 }
+
+p.foot-landing {
+    margin-top: 50px;
+    font-size: 2rem !important;
+}
+
+p.foot-landing a {
+    color: white;
+}
+
+@media (max-width: 555px) {
+    p.foot-landing {
+        margin-top: 30px;
+    }
+    section.hero p {
+        font-size: 2.5rem;
+    }
+    a.btn-more {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 415px) {
+    p.foot-landing {
+        margin-top: 50px;
+        font-size: 1.5rem !important;
+    }
+    section.hero p {
+        font-size: 2rem;
+    }
+    a.btn-more {
+        font-size: 1rem;
+    }
+}

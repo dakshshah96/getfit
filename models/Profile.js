@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
 
-// schema for user profile
+// schema for user profiles
 const profileSchema = new mongoose.Schema({
     name: { type: String, required: 'Please enter your name!' },
     slug: String,
@@ -18,13 +18,13 @@ const profileSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.ObjectId, ref: 'User', required: 'You must supply a user!'}
 });
 
-// define indexes
+// define indexes for faster searching
 profileSchema.index({
     name: 'text',
     about: 'text'
 });
 
-// pre-save slug
+// pre-save slug to prevent duplicates on another profile with same name
 profileSchema.pre('save', async function(next) {
     if(!this.isModified('name')) {
         return next();

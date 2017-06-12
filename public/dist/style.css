@@ -1034,161 +1034,6 @@ span.failure {
     opacity: 0;
     left: 20px; } }
 
-.review {
-  background: white;
-  border: 1px solid #e6e6e6;
-  border-bottom: 0;
-  border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  padding-left: 5px; }
-  .review:before {
-    width: 5px;
-    left: 0;
-    content: '';
-    display: block;
-    background: linear-gradient(0, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%);
-    position: absolute;
-    height: 100%;
-    background-attachment: fixed; }
-  .review__header {
-    border-bottom: 1px solid #e6e6e6;
-    display: -ms-flexbox;
-    display: flex; }
-    .review__header > * {
-      border-right: 1px solid #e6e6e6;
-      padding: 0.2rem;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-          align-items: center;
-      -ms-flex: 1;
-          flex: 1;
-      -ms-flex-pack: center;
-          justify-content: center; }
-      .review__header > *:last-child {
-        border-right: 0; }
-  .review__author {
-    -ms-flex-pack: start;
-        justify-content: flex-start;
-    padding-left: 2rem;
-    display: -ms-flexbox;
-    display: flex; }
-    .review__author .avatar {
-      margin-right: 2rem; }
-  .review__time {
-    font-size: 1.2rem;
-    color: #999999; }
-  .review__stars {
-    color: #FFC40E; }
-  .review__body {
-    padding: 2rem; }
-  .review p {
-    white-space: pre-wrap; }
-
-/*
-  Reviewer Form
- */
-.reviewer {
-  position: relative;
-  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
-  margin-bottom: 2rem; }
-  .reviewer__stars {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-        justify-content: center; }
-    .reviewer__stars input {
-      display: none; }
-      .reviewer__stars input:checked ~ label {
-        color: #FFC40E; }
-      .reviewer__stars input + label {
-        font-size: 0;
-        /* These are in the opposite DOM order
-           re-order them to be visually in normal order
-           This is fine for accessibility because our labels have for()
-         */ }
-        .reviewer__stars input + label:before {
-          content: '\2605';
-          font-size: 2rem; }
-        .reviewer__stars input + label[for="star5"] {
-          -ms-flex-order: 5;
-              order: 5; }
-        .reviewer__stars input + label[for="star4"] {
-          -ms-flex-order: 4;
-              order: 4; }
-        .reviewer__stars input + label[for="star3"] {
-          -ms-flex-order: 3;
-              order: 3; }
-        .reviewer__stars input + label[for="star2"] {
-          -ms-flex-order: 2;
-              order: 2; }
-        .reviewer__stars input + label[for="star1"] {
-          -ms-flex-order: 1;
-              order: 1; }
-        .reviewer__stars input + label:hover, .reviewer__stars input + label:hover ~ label {
-          color: #ffdd74; }
-  .reviewer textarea {
-    border: 0;
-    outline: 0;
-    font-size: 2rem;
-    padding: 2rem;
-    height: 200px; }
-  .reviewer__meta {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-        justify-content: center;
-    -ms-flex-align: center;
-        align-items: center;
-    border-top: 1px solid #e6e6e6; }
-    .reviewer__meta > * {
-      -ms-flex: 1;
-          flex: 1; }
-
-.pagination {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  background: white;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
-  .pagination__next {
-    -ms-flex: 0 0 auto;
-        flex: 0 0 auto;
-    padding: 1rem 3rem 1rem 1rem; }
-    .pagination__next a:after {
-      margin-left: 1rem;
-      content: '\2192'; }
-  .pagination__prev {
-    -ms-flex: 0 0 auto;
-        flex: 0 0 auto;
-    padding: 1rem 1rem 1rem 3rem; }
-    .pagination__prev a:before {
-      margin-right: 1rem;
-      content: '\2190'; }
-  .pagination__text {
-    -ms-flex: 3 0 auto;
-        flex: 3 0 auto;
-    padding: 1rem;
-    text-align: center; }
-
-.map {
-  padding: 20px;
-  background: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
-
-#map {
-  height: 500px; }
-
-.popup {
-  width: 300px; }
-  .popup img {
-    width: 100%; }
-
 .hide {
   text-indent: -999999px;
   font-size: 0; }
@@ -1266,5 +1111,29 @@ a.btn-more:hover {
 a.btn-more:active {
   border-bottom-width: 2px;
   margin-top: 2px; }
+
+p.foot-landing {
+  margin-top: 50px;
+  font-size: 2rem !important; }
+
+p.foot-landing a {
+  color: white; }
+
+@media (max-width: 555px) {
+  p.foot-landing {
+    margin-top: 30px; }
+  section.hero p {
+    font-size: 2.5rem; }
+  a.btn-more {
+    font-size: 1.5rem; } }
+
+@media (max-width: 415px) {
+  p.foot-landing {
+    margin-top: 50px;
+    font-size: 1.5rem !important; }
+  section.hero p {
+    font-size: 2rem; }
+  a.btn-more {
+    font-size: 1rem; } }
 
 /*# sourceMappingURL=style.css.map*/

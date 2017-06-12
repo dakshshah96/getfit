@@ -474,8 +474,6 @@ module.exports = defaults;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-// based on https://gist.github.com/paulirish/12fb951a8b893a454b32
-
 var $ = document.querySelector.bind(document);
 var $$ = document.querySelectorAll.bind(document);
 
@@ -971,6 +969,7 @@ var _bling = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// POST to endpoint on new heart/un-heart
 function ajaxHeart(e) {
     var _this = this;
 
@@ -1048,9 +1047,9 @@ function typeAhead(search) {
 
     // handle keyboard inputs
     searchInput.on('keyup', function (e) {
-        // if they aren't pressing up, down or enter, who cares!
+        // if they aren't pressing up, down or enter, don't do anything
         if (![38, 40, 13].includes(e.keyCode)) {
-            return; // nah
+            return;
         }
         var activeClass = 'search__result--active';
         var current = search.querySelector('.' + activeClass);
@@ -2705,8 +2704,10 @@ var _heart2 = _interopRequireDefault(_heart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// type ahead functionality for search bar
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
 
+// heart user profiles
 var heartForms = (0, _bling.$$)('form.heart');
 heartForms.on('submit', _heart2.default);
 

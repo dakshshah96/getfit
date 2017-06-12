@@ -5,5 +5,17 @@ include mixins/_forgot
 
 block content
     .inner
-        +loginForm()
-        +forgotForm()
+        if (!user)
+            +loginForm()
+            +forgotForm()
+        else
+            h2 Login
+            p Hey there, seems like you're already logged in and everything's good to go!
+            p
+                a(href=`/profile/me`) Go to your profile →
+            p
+                a(href=`/fitness`) See your fitness data →
+            p
+                a(href=`/profiles`) Find others like you →
+            p
+                a(href=`/logout`) LOGOUT →

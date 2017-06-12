@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-// schema for user profile
+// schema for fitness data
 const fitnessSchema = new mongoose.Schema({
     walk: { type: Number, default: 0 },
     run: { type: Number, default: 0 },

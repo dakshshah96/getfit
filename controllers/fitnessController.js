@@ -5,11 +5,12 @@ const Fitness = mongoose.model('Fitness');
 exports.addEditFitness = async (req, res) => {
     // query database for fitness data of user
     const fitness = await Fitness.findOne({ user: req.user._id });
+    // if no fitness data exists
     if (!fitness) {
-        // render form for adding new fitness data
+        // form for adding new fitness data
         res.render('editFitness', { title: 'Add Fitness Data' });
     } else {
-        // render edit form for fitness editing
+        // render edit form for fitness data if fitness data exists already
         res.render('editFitness', { title: `Edit Fitness Data`, fitness });
     }
 };
@@ -24,7 +25,7 @@ exports.createFitness = async (req, res) => {
 
 // update fitness data in database on receiving POST
 exports.updateFitness = async (req, res) => {
-    // find and update fitness
+    // find and update fitness data
     const fitness = await Fitness.findOneAndUpdate({ _id: req.params.id }, req.body, {
         new: true, // return new fitness
         runValidators: true
@@ -34,14 +35,14 @@ exports.updateFitness = async (req, res) => {
     res.redirect(`/fitness`);
 };
 
-// show fitness data of logged in user
+// show fitness data of logged in user at /fitness
 exports.showFitness = async (req, res) => {
     const fitness = await Fitness.findOne({ user: req.user._id });
     if(!fitness) {
-        // render form for adding new fitness data
+        // render form for adding new fitness data if no data exists
         res.render('editFitness', { title: 'Add Fitness Data' });
     } else {
-        // display fitness data
+        // display fitness data if there is stored fitness data
         res.render('fitness', { title: `Fitness Data for ${req.user.name}`, fitness });
     }
 };

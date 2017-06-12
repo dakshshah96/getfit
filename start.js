@@ -7,24 +7,22 @@ if (major < 7 || (major === 7 && minor <= 5)) {
   process.exit();
 }
 
-// import environmental variables from our variables.env file
+// import environmental variables from variables.env
 require('dotenv').config({ path: 'variables.env' });
 
-// Connect to our Database and handle an bad connections
+// Connect to database and handle bad connections
 mongoose.connect(process.env.DATABASE);
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 mongoose.connection.on('error', (err) => {
-  console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`);
+  console.error(`🚫🚫🚫🚫 ERROR → ${err.message}`);
 });
-
-// READY?! Let's go!
 
 // import all models
 require('./models/Profile');
 require('./models/Fitness');
 require('./models/User');
 
-// Start our app!
+// Start app!
 const app = require('./app');
 app.set('port', process.env.PORT || 7777);
 const server = app.listen(app.get('port'), () => {

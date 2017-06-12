@@ -4,4 +4,16 @@ include mixins/_registerForm
 
 block content
     .inner
-        +registerForm()
+        if (!user)
+            +registerForm()
+        else
+            h2 Register
+            p Hey there, seems like you're already logged in and everything's good to go!
+            p
+                a(href=`/profile/me`) Go to your profile →
+            p
+                a(href=`/fitness`) See your fitness data →
+            p
+                a(href=`/profiles`) Find others like you →
+            p
+                a(href=`/logout`) LOGOUT →

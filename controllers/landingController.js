@@ -1,13 +1,6 @@
 const mongoose = require('mongoose');
 
-const Profile = mongoose.model('Profile');
-const User = mongoose.model('User');
-const Fitness = mongoose.model('Fitness');
-
+// render landing page
 exports.landingPage = (req, res) => {
-    if (req.isAuthenticated()) {
-        res.render('landing', { title: 'Welcome to GetFit!' });
-    } else {
-        res.render('landing', { title: 'Welcome to GetFit!' });
-    }
+    res.render('landing', { title: 'Welcome to GetFit!' });
 };

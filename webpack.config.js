@@ -1,18 +1,9 @@
-/*
-  Okay folks, want to learn a little bit about webpack?
-*/
-
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-/*
-  webpack sees every file as a module.
-  How to handle those files is up to loaders.
-  We only have a single entry point (a .js file) and everything is required from that js file
-*/
 
-// // image rule
+// // image rule for late use if needed
 // const images = {
 //   test: /\.(png|jpg)$/,
 //   loader: 'file-loader'
@@ -20,17 +11,14 @@ const autoprefixer = require('autoprefixer');
 
 // This is our JavaScript rule that specifies what to do with .js files
 const javascript = {
-  test: /\.(js)$/, // see how we match anything that ends in `.js`? Cool
+  test: /\.(js)$/, // match anything that ends in `.js`
   use: [{
     loader: 'babel-loader',
-    options: { presets: ['es2015'] } // this is one way of passing options
+    options: { presets: ['es2015'] } // pass options
   }],
 };
 
-/*
-  This is our postCSS loader which gets fed into the next loader. I'm setting it up in it's own variable because its a didgeridog
-*/
-
+// post css loader
 const postcss = {
   loader: 'postcss-loader',
   options: {
@@ -38,7 +26,7 @@ const postcss = {
   }
 };
 
-// this is our sass/css loader. It handles files that are require('something.scss')
+// sass/css loader. handles files that are require('something.scss')
 const styles = {
   test: /\.(scss)$/,
   // here we pass the options as query params b/c it's short.
@@ -47,41 +35,36 @@ const styles = {
   use: ExtractTextPlugin.extract(['css-loader?sourceMap', postcss, 'sass-loader?sourceMap'])
 };
 
-// We can also use plugins - this one will compress the crap out of our JS
+// this one will compress the crap out of JS uglify
 const uglify = new webpack.optimize.UglifyJsPlugin({ // eslint-disable-line
   compress: { warnings: false }
 });
 
-// OK - now it's time to put it all together
+// put it all together
 const config = {
   entry: {
-    // we only have 1 entry, but I've set it up for multiple in the future
+    // just one entry. add more here if needed
     App: './public/javascripts/fit-app.js'
   },
-  // we're using sourcemaps and here is where we specify which kind of sourcemap to use
+  // specify which type of source map to use
   devtool: 'source-map',
-  // Once things are done, we kick it out to a file.
+  // output everything to files
   output: {
-    // path is a built in node module
-    // __dirname is a variable from node that gives us the
     path: path.resolve(__dirname, 'public', 'dist'),
-    // we can use "substitutions" in file names like [name] and [hash]
-    // name will be `App` because that is what we used above in our entry
     filename: '[name].bundle.js'
   },
 
-  // remember we said webpack sees everthing as modules and how different loaders are responsible for different file types? Here is is where we implement them. Pass it the rules for our JS and our styles
+  // pass defined rules here
   module: {
     rules: [javascript, styles]
   },
-  // finally we pass it an array of our plugins - uncomment if you want to uglify
-  // plugins: [uglify]
   plugins: [
-    // here is where we tell it to output our css to a separate file
+    // output css to a separate file
     new ExtractTextPlugin('style.css'),
   ]
 };
-// webpack is cranky about some packages using a soon to be deprecated API. shhhhhhh
+
+// supress API deprecation warnings
 process.noDeprecation = true;
 
 module.exports = config;

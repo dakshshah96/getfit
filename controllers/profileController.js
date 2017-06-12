@@ -5,6 +5,7 @@ const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
 
+// multer options for image uploads
 const multerOptions = {
     storage: multer.memoryStorage(),
     fileFilter(req, file, next) {
@@ -19,23 +20,18 @@ const multerOptions = {
 
 // edit or add profile
 exports.addEditProfile = async (req, res) => {
-    // query database for fitness data of user
+    // query database for logged in user profile
     const profile = await Profile.findOne({ user: req.user._id });
     if (!profile) {
-        // render form for adding new profile
+        // render form for adding new profile if no profile exists
         res.render('editProfile', { title: 'Add Profile' });
     } else {
         // confirm this is users profile
         confirmUser(profile, req.user);
-        // render edit form for profile editing
+        // render edit form for profile editing if profile exists
         res.render('editProfile', { title: `Edit ${profile.name}'s Profile`, profile });
     }
 };
-
-// // render page for adding profile on receiving GET
-// exports.addProfile = (req, res) => {
-//     res.render('editProfile', { title: 'Add Profile' });
-// };
 
 // enable photo upload
 exports.upload = multer(multerOptions).single('photo');
@@ -55,7 +51,7 @@ exports.resize = async (req, res, next) => {
     await photo.write(`./public/uploads/${req.body.photo}`);
     // continue
     next();
-}
+};
 
 // add submitted profile by POST to database
 exports.createProfile = async (req, res) => {
@@ -72,7 +68,7 @@ exports.getProfiles = async (req, res) => {
     res.render('profiles', { title: 'Profiles', profiles });
 };
 
-// redirect /profile/me to profile page of user
+// redirect /profile/me to profile page of logged in user
 exports.myProfile = async (req, res) => {
     // find profile from user id
     const profile = await Profile.findOne({ user: req.user._id });
@@ -81,26 +77,17 @@ exports.myProfile = async (req, res) => {
         req.flash('error', `You don't have a profile yet! Add one now.`);
         res.render('editProfile', { title: 'Add Profile' });
     } else {
-        // redirect to profile slug
+        // redirect to profile slug if profile present
         res.redirect(`/profile/${profile.slug}`);
     }
 };
 
+// check if this is the correct user
 const confirmUser = (profile, user) => {
     if (user == undefined || !profile.user.equals(user._id)) {
         throw Error('You can edit only your own profile! Please log in to the correct account.');
     }
 };
-
-// // render page for editing profile on receiving GET
-// exports.editProfile = async (req, res) => {
-//     // find profile from given id
-//     const profile = await Profile.findOne({ _id: req.params.id });
-//     // confirm this is users profile
-//     confirmUser(profile, req.user);
-//     // render edit form for profile editing
-//     res.render('editProfile', { title: `Edit ${profile.name}`, profile })
-// };
 
 // update profile in database on receiving POST
 exports.updateProfile = async (req, res) => {
@@ -121,9 +108,10 @@ exports.getProfileBySlug = async (req, res, next) => {
     res.render('profile', { profile, title: profile.name });
 };
 
+// handle searching profiles
 exports.searchProfiles = async (req, res) => {
     const profiles = await Profile
-    // find stores containing query
+    // find profiles containing query
     .find({ $text: { $search: req.query.q }}, { score: {$meta: 'textScore'}, name: 1, about: 1, slug: 1, _id: 0 })
     // sort by text score
     .sort({
@@ -132,6 +120,7 @@ exports.searchProfiles = async (req, res) => {
     res.json(profiles);
 };
 
+// handling hearting profiles
 exports.heartProfile = async (req, res) => {
     const hearts = req.user.hearts.map(obj => obj.toString());
     const operator = hearts.includes(req.params.id) ? '$pull' : '$addToSet';
@@ -139,6 +128,7 @@ exports.heartProfile = async (req, res) => {
     res.json(user);
 };
 
+// get list of hearted profiles
 exports.getHearts = async (req, res) => {
     const profiles = await Profile.find({
         _id: { $in: req.user.hearts }

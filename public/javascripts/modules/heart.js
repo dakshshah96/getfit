@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { $ } from './bling';
 
+// POST to endpoint on new heart/un-heart
 function ajaxHeart(e) {
     e.preventDefault();
     axios.post(this.action).then(res => {
