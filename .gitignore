@@ -1,3 +1,6 @@
-/node_modules
+node_modules/
+.DS_Store
+*.log
 variables.env
-npm-debug.log
+public/uploads/*
+!public/uploads/profile.jpg
