@@ -29,7 +29,7 @@ exports.addEditProfile = async (req, res) => {
         // confirm this is users profile
         confirmUser(profile, req.user);
         // render edit form for profile editing if profile exists
-        res.render('editProfile', { title: `Edit ${profile.name}'s Profile`, profile });
+        res.render('editProfile', { title: `Edit Profile — ${profile.name}`, profile });
     }
 };
 
@@ -56,6 +56,7 @@ exports.resize = async (req, res, next) => {
 // add submitted profile by POST to database
 exports.createProfile = async (req, res) => {
     req.body.user = req.user._id;
+    req.body.name = req.user.name;
     const profile = await (new Profile(req.body)).save();
     req.flash('success', `Successfully created the profile of <strong>${profile.name}</strong>!`)
     res.redirect(`/profile/${profile.slug}`);

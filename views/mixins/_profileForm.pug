@@ -1,7 +1,7 @@
 mixin profileForm(profile = {})
     form(action=`/profile/add/${profile._id || ''}` method="POST" class="card" enctype="multipart/form-data")
-        label(for="name") Name
-        input(type="text" name="name" value=profile.name required)
+        p Name: 
+            strong #{user.name}
         label(for="gender") Gender
         - const genderChoices = ['Male', 'Female']
         ul.tags
