@@ -873,6 +873,10 @@ label {
     .goal {
       width: 100%; } }
 
+.form-title {
+  line-height: 1.2;
+  font-size: 3rem; }
+
 span.success {
   font-weight: bold;
   color: green; }

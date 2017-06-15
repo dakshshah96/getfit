@@ -9,10 +9,6 @@ const profileSchema = new mongoose.Schema({
     gender: { type: String, required: 'Please select your gender!' },
     age: { type: Number, required: 'Please enter your age!' },
     about: { type: String, required: 'Please write something about you!' },
-    weight: { type: Number, required: 'Please enter your weight!', default: 0 },
-    height: { type: Number, required: 'Please enter your height!', default: 0 },
-    waist: { type: Number, required: 'Please enter your waist size!', default: 0 },
-    fat_percent: { type: Number, required: 'Please enter your body fat percentage!', default: 0 },
     created: { type: Date, default: Date.now },
     photo: { type: String },
     user: { type: mongoose.Schema.ObjectId, ref: 'User', required: 'You must supply a user!'}

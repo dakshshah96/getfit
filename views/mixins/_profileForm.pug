@@ -21,12 +21,4 @@ mixin profileForm(profile = {})
                 img(src=`${profile.photo}`, alt=profile.name width=200)
         label(for="about") About
         textarea(name="about" required)=profile.about
-        label(for="weight") Weight (kgs)
-        input(type="number" name="weight" value=profile.weight required)
-        label(for="height") Height (cms)
-        input(type="number" name="height" value=profile.height required)
-        label(for="waist") Waist (cms)
-        input(type="number" name="waist" value=profile.waist required)
-        label(for="fat_percent") Body Fat (%)
-        input(type="number" name="fat_percent" value=profile.fat_percent required)
         input(type="submit" value="Save →" class="button")

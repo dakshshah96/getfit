@@ -8,11 +8,61 @@ block content
         h3 Your Goals
         .goal-data
             .goal
+                img(src="/images/icons/fitness/weight.png")
+                .goal__title
+                    p Weight
+                .goal__details
+                    p Current Weight: #{fitness.weight} kgs
+                    p Weight Goal: #{fitness.weight_goal} kgs
+                    - let weightPercent = fitness.weight > 0 ? Math.round(fitness.weight_goal / fitness.weight * 100) : 0
+                    p Achieved: #{weightPercent}%
+                    p
+                        if (weightPercent >= 100)
+                            span.success Wow, you're amazing!
+                        else
+                            span.failure Don't worry, you'll get there!
+            .goal
+                img(src="/images/icons/fitness/height.png")
+                .goal__title
+                    p Height
+                .goal__details
+                    p Current Height: #{fitness.height} cms
+        .goal-data
+            .goal
+                img(src="/images/icons/fitness/fat.png")
+                .goal__title
+                    p Body Fat
+                .goal__details
+                    p Current Body Fat: #{fitness.fat_percent}%
+                    p Body Fat Goal: #{fitness.fat_percent_goal}%
+                    - let fatPercent = fitness.fat_percent > 0 ? Math.round(fitness.fat_percent_goal / fitness.fat_percent * 100) : 0
+                    p Achieved: #{fatPercent}%
+                    p
+                        if (fatPercent >= 100)
+                            span.success Wow, you're amazing!
+                        else
+                            span.failure Don't worry, you'll get there!
+            .goal
+                img(src="/images/icons/fitness/waist.png")
+                .goal__title
+                    p Waist
+                .goal__details
+                    - let waistPercent = fitness.waist > 0 ? Math.round(fitness.waist_goal / fitness.waist * 100) : 0
+                    p Current Waist: #{fitness.waist} cms
+                    p Goal: #{fitness.waist_goal} cms
+                    p Achieved: #{waistPercent}%
+                    p
+                        if (waistPercent >= 100)
+                            span.success Wow, you're amazing!
+                        else
+                            span.failure Don't worry, you'll get there!
+        .goal-data
+            .goal
                 img(src="/images/icons/fitness/water_drank.png")
                 .goal__title
                     p Water
                 .goal__details
-                    p Glasses Drank: #{fitness.water_drank}
+                    p Glasses Drank: #{fitness.water_drank} glasses
                     p Goal: #{fitness.water_to_drink} glasses
                     - let waterPercent = fitness.water_to_drink > 0 ? Math.round(fitness.water_drank / fitness.water_to_drink * 100) : 0
                     p Achieved: #{waterPercent}%
@@ -29,7 +79,7 @@ block content
                     - let totalCal = ((fitness.walk * 170/60) + (fitness.run * 476/60) + (fitness.swim * 493/60) + (fitness.basketball * 204/30) + (fitness.football * 612/60) + (fitness.tennis * 408/60)).toFixed(2)
                     - let calPercent = fitness.calories_to_burn > 0 ? Math.round(totalCal / fitness.calories_to_burn * 100) : 0
                     p Total Calories Burnt: #{totalCal}
-                    p Goal: #{fitness.calories_to_burn}
+                    p Goal: #{fitness.calories_to_burn} calories
                     p Achieved: #{calPercent}%
                     p
                         if (calPercent >= 100)
