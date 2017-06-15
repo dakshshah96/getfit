@@ -18,7 +18,7 @@ mixin profileForm(profile = {})
         label(for="photo") Photo
             input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
             if profile.photo
-                img(src=`/uploads/${profile.photo}`, alt=profile.name width=200)
+                img(src=`${profile.photo}`, alt=profile.name width=200)
         label(for="about") About
         textarea(name="about" required)=profile.about
         label(for="weight") Weight (kgs)

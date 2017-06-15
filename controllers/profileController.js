@@ -4,6 +4,8 @@ const User = mongoose.model('User');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
+const cloudinary = require('cloudinary');
+const fs = require('fs');
 
 // multer options for image uploads
 const multerOptions = {
@@ -49,6 +51,8 @@ exports.resize = async (req, res, next) => {
     const photo = await jimp.read(req.file.buffer);
     await photo.resize(800, jimp.AUTO);
     await photo.write(`./public/uploads/${req.body.photo}`);
+    // upload to cloudinary
+    await cloudinary.uploader.upload(`./public/uploads/${req.body.photo}`, function(result) { req.body.photo = result.url });
     // continue
     next();
 };
@@ -57,6 +61,7 @@ exports.resize = async (req, res, next) => {
 exports.createProfile = async (req, res) => {
     req.body.user = req.user._id;
     req.body.name = req.user.name;
+    if (!req.body.photo) { req.body.photo = "http://res.cloudinary.com/daksh/image/upload/v1497535734/GetFit/profile.jpg" }
     const profile = await (new Profile(req.body)).save();
     req.flash('success', `Successfully created the profile of <strong>${profile.name}</strong>!`)
     res.redirect(`/profile/${profile.slug}`);
