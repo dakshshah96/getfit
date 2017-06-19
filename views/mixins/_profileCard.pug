@@ -11,7 +11,7 @@ mixin profileCard(profile = {})
                                 != h.icon('heart')
                 if user && profile.user.equals(user._id)
                     .profile__action.profile__action--edit
-                        a(href=`/profile/${profile._id}/edit`)
+                        a(href=`/profile/edit`)
                             != h.icon('pencil')
             img(src=`${profile.photo}`)
             h2.title
