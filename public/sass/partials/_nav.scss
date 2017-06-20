@@ -19,7 +19,7 @@
     color: white;
     border-right: 1px solid rgba(255,255,255,0.1);
     text-transform: uppercase;
-    padding: 1.2rem 2rem 1rem 2rem;
+    padding: 0 2rem 0 2rem;
     display: block;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,8 @@
       svg {
         transform: scale(1.2)
       }
-      background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%) fixed;
+      background: #F15807;
+      /*background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%) fixed;*/
       // background: none;
     }
     &--logo {
@@ -71,6 +72,12 @@
         }
       }
     }
+  }
+}
+
+@media all and (min-width: 720px) {
+  .nav {
+    height: 100px;
   }
 }
 
@@ -108,6 +115,7 @@
       width: 50%;
     }
     &__link {
+      padding: 1.2rem 1rem 1rem 1rem;
       width: 100%;
       svg {
         // width: 5px;

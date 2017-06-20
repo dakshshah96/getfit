@@ -31,7 +31,7 @@ exports.addEditProfile = async (req, res) => {
         // confirm this is users profile
         confirmUser(profile, req.user);
         // render edit form for profile editing if profile exists
-        res.render('editProfile', { title: `Edit Profile — ${profile.name}`, profile });
+        res.render('editProfile', { title: `Edit Profile`, profile });
     }
 };
 

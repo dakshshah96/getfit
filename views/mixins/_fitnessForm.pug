@@ -1,34 +1,36 @@
 mixin fitnessForm(fitness = {})
     form(action=`/fitness/add/${fitness._id || ''}` method="POST" class="card")
-        p.form-title Weight
-        label(for="weight") Current Weight (kgs)
-        input(type="number" name="weight" value=(fitness.weight || 0) required)
-        label(for="weight_goal") Weight Goal (kgs)
-        input(type="number" name="weight_goal" value=(fitness.weight_goal || 0) required)
-        p.form-title Height
-        label(for="height") Current Height (cms)
-        input(type="number" name="height" value=(fitness.height || 0) required)
-        p.form-title Waist Size
-        label(for="waist") Current Waist (cms)
-        input(type="number" name="waist" value=(fitness.waist || 0) required)
-        label(for="waist_goal") Waist Goal (cms)
-        input(type="number" name="waist_goal" value=(fitness.waist_goal || 0) required)
-        p.form-title Body Fat
-        label(for="fat_percent") Current Body Fat (%)
-        input(type="number" name="fat_percent" value=(fitness.fat_percent || 0) required)
-        label(for="fat_percent_goal") Body Fat Goal (%)
-        input(type="number" name="fat_percent_goal" value=(fitness.fat_percent_goal || 0) required)
-        p.form-title Water
-        label(for="water_drank") Water Drank (glasses)
-        input(type="number" name="water_drank" placeholder="0" value=(fitness.water_drank || 0) required)
-        label(for="water_to_drink") Water Goal (glasses)
-        input(type="number" name="water_to_drink" placeholder="0" value=(fitness.water_to_drink || 0) required)
-        p.form-title Activities
-        - const activityChoices = ['Walk', 'Run', 'Swim', 'Basketball', 'Football', 'Tennis']
-        each choice in activityChoices
-            label(for=choice.toLowerCase()) #{choice} (minutes)
-            input(type="number" id=choice placeholder="0" name=choice.toLowerCase() value=(fitness[`${choice.toLowerCase()}`] || 0) required)
-        p.form-title Calories
-        label(for="calories_to_burn") Calories Burn Goal (kcal)
-        input(type="number" name="calories_to_burn" placeholder="0" value=(fitness.calories_to_burn || 0) required)
-        input(type="submit" value="Save →" class="button")
+        h2= title
+        .form-contents
+            p.form-title Weight
+            label(for="weight") Current Weight (kgs)
+            input(type="number" name="weight" value=(fitness.weight || 0) required)
+            label(for="weight_goal") Weight Goal (kgs)
+            input(type="number" name="weight_goal" value=(fitness.weight_goal || 0) required)
+            p.form-title Height
+            label(for="height") Current Height (cms)
+            input(type="number" name="height" value=(fitness.height || 0) required)
+            p.form-title Waist Size
+            label(for="waist") Current Waist (cms)
+            input(type="number" name="waist" value=(fitness.waist || 0) required)
+            label(for="waist_goal") Waist Goal (cms)
+            input(type="number" name="waist_goal" value=(fitness.waist_goal || 0) required)
+            p.form-title Body Fat
+            label(for="fat_percent") Current Body Fat (%)
+            input(type="number" name="fat_percent" value=(fitness.fat_percent || 0) required)
+            label(for="fat_percent_goal") Body Fat Goal (%)
+            input(type="number" name="fat_percent_goal" value=(fitness.fat_percent_goal || 0) required)
+            p.form-title Water
+            label(for="water_drank") Water Drank (glasses)
+            input(type="number" name="water_drank" placeholder="0" value=(fitness.water_drank || 0) required)
+            label(for="water_to_drink") Water Goal (glasses)
+            input(type="number" name="water_to_drink" placeholder="0" value=(fitness.water_to_drink || 0) required)
+            p.form-title Activities
+            - const activityChoices = ['Walk', 'Run', 'Swim', 'Basketball', 'Football', 'Tennis']
+            each choice in activityChoices
+                label(for=choice.toLowerCase()) #{choice} (minutes)
+                input(type="number" id=choice placeholder="0" name=choice.toLowerCase() value=(fitness[`${choice.toLowerCase()}`] || 0) required)
+            p.form-title Calories
+            label(for="calories_to_burn") Calories Burn Goal (kcal)
+            input(type="number" name="calories_to_burn" placeholder="0" value=(fitness.calories_to_burn || 0) required)
+            input(type="submit" value="Save →" class="button")

@@ -1,20 +1,20 @@
 mixin profileCard(profile = {})
     .profile
-        .profile__hero
-            .profile__actions
-                if user
-                    .profile__action.profile__action--heart
-                        form.heart(method="POST" action=`/api/profiles/${profile._id}/heart`)
-                            - const heartStrings = user.hearts.map(obj => obj.toString())
-                            - const heartClass = heartStrings.includes(profile._id.toString()) ? 'heart__button--hearted' : ''
-                            button.heart__button(type="submit" name="heart" class=heartClass)
-                                != h.icon('heart')
-                if user && profile.user.equals(user._id)
-                    .profile__action.profile__action--edit
-                        a(href=`/profile/edit`)
-                            != h.icon('pencil')
-            img(src=`${profile.photo}`)
-            h2.title
-                a(href=`/profile/${profile.slug}`) #{profile.name}
-            .profile__details
-                p= profile.about.split(' ').slice(0, 25).join(' ')
+        .profile__photo
+            img.card-hero(src=`${profile.photo}`)
+        h5
+            a(href=`/profile/${profile.slug}`) #{profile.name}
+        .profile__details
+            p= profile.about.split(' ').slice(0, 25).join(' ')
+        .profile__actions
+            if user
+                .profile__action.profile__action--heart
+                    form.heart(method="POST" action=`/api/profiles/${profile._id}/heart`)
+                        - const heartStrings = user.hearts.map(obj => obj.toString())
+                        - const heartClass = heartStrings.includes(profile._id.toString()) ? 'heart__button--hearted' : ''
+                        button.heart__button(type="submit" name="heart" class=heartClass)
+                            != h.icon('heart')
+            if user && profile.user.equals(user._id)
+                .profile__action.profile__action--edit
+                    a(href=`/profile/edit`)
+                        != h.icon('pencil')

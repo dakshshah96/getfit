@@ -74,8 +74,13 @@ p.foot-landing a {
     section.hero p {
         font-size: 2.5rem;
     }
+}
+
+@media (max-width: 525px) {
     a.btn-more {
-        font-size: 1.5rem;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 }
 
@@ -86,8 +91,5 @@ p.foot-landing a {
     }
     section.hero p {
         font-size: 2rem;
-    }
-    a.btn-more {
-        font-size: 1rem;
     }
 }
