@@ -1,15 +1,16 @@
 extends layout
 
 block content
-    .single
-        .single__hero
+    .single__hero
+        .hero-contents
             img.single__image(src=`${profile.photo}`)
-            h2.title.title--single
-                a(href=`/profile/${profile.slug}`) #{profile.name}
+            .single__title
+                h2
+                    a(href=`/profile/${profile.slug}`) #{profile.name}
+                p #{profile.gender}, #{profile.age} years old
     .single__details.inner
         - let firstName = profile.name.split(' ')[0]
         h3 About #{firstName}
-        p <strong>#{profile.gender}, #{profile.age} years old</strong>
         p= profile.about
         - var dd = profile.created.getDate();
         - var mm = profile.created.getMonth() + 1;

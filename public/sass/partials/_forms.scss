@@ -1,7 +1,11 @@
 input, textarea {
-  width:100%;
-  padding:10px;
-  border: 1px solid $grey;
+  display: block;
+  background: #e8ebed;
+  width: 100%;
+  padding: 15px 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
   &.input {
     &--error {
       border-color: red;
@@ -9,9 +13,35 @@ input, textarea {
   }
 }
 
+textarea {
+  height: 200px;
+}
+
+input[type="submit"] {
+  margin-top: 20px;
+}
+
 label {
   padding: 10px 0;
   display: block;
+}
+
+form.card {
+  margin-top: 50px;
+  padding: 0;
+}
+
+.form-contents {
+  padding: 0 5rem 5rem 5rem;
+}
+
+form.card h2 {
+  text-align: center;
+  background: #9D50BB;
+  width: 100%;
+  padding: 15px;
+  color: white;
+  border-radius: 10px 10px 0 0;
 }
 
 .form {
@@ -21,7 +51,6 @@ label {
   & + .form {
     margin-top: 4rem;
   }
-  // I know this isn't bem but meh
   h2 {
     margin: 0;
     font-size: 2rem;
@@ -29,4 +58,8 @@ label {
     margin-bottom: 2rem;
     border-bottom: 1px solid $grey;
   }
+}
+
+.gender-choice {
+  display: inline-block;
 }

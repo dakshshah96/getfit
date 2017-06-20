@@ -1,65 +1,82 @@
 .single {
   &__hero {
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2vw), 0% 100%);
-    &:before {
-      display: block;
-      content: '';
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      right: 0;
-      background:
-        linear-gradient(45deg, hsla(190, 95%, 43%, 1) 0%, hsla(190, 95%, 43%, 0) 70%),
-        linear-gradient(135deg, hsla(219, 93%, 48%, 1) 10%, hsla(219, 93%, 48%, 0) 80%),
-        linear-gradient(225deg, hsla(293, 93%, 48%, 1) 10%, hsla(293, 93%, 48%, 0) 80%),
-        linear-gradient(315deg, hsla(130, 96%, 45%, 1) 100%, hsla(130, 96%, 45%, 0) 70%);
-      opacity: 0.6;
-      z-index: 1;
-      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2vw), 0% 100%);
-    }
+    background: #9D50BB;
+    background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);
+    background: linear-gradient(to right, #6E48AA, #9D50BB);
+    height: 400px;
+    padding-top: 50px;
   }
   &__image {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    position: absolute;
+    height: 200px;
+    width: 200px;
+    float: left;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: block;
   }
   &__details {
     background: white;
-    // clip-path: polygon(0px 2vw, 100% 0, 100% calc(100% - 2vw), 0% 100%);
     position: relative;
     z-index: 10;
     padding: 3rem;
     margin-top: -10rem;
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.15);
   }
-  &__map {
-    width: calc(100% + 6rem);
-    max-width: none;
-    margin-top: -3rem;
-    margin-left: -3rem;
+}
+
+.hero-contents {
+  display: block;
+  padding: 1px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.single__title {
+  float: right;
+  text-align: center;
+  @media all and (max-width: 675px) {
+    float: left;
+    padding-left: 80px;
   }
-  &__location {
-    margin: 0;
-    margin-top: -3rem;
-    margin-right: -5rem;
-    background: $black;
-    color: white;
-    display: inline-block;
-    float: right;
-    position: relative;
-    padding: 1rem;
-    @media all and (max-width: 850px) {
-      margin-right: 0;
-    }
+  @media all and (max-width: 440px) {
+    display: block;
+    padding-left: none;
+  }
+}
+
+.single__title h2 a, .single__title p {
+  font-family: 'Roboto';
+  font-weight: 300;
+  color: white;
+}
+
+@media all and (max-width: 900px) {
+  .single__details.inner {
+    padding: 30px 30px;
+  }
+}
+
+@media all and (max-width: 620px) {
+  .single__hero {
+    height: 300px;
+    padding-top: 10px;
+  }
+  .hero-contents {
+    padding: 0 10px;
+  }
+  .single__image {
+    height: 100px;
+    width: 100px;
+    margin-top: 50px;
+  }
+  .single__title h2 a {
+    font-size: 3rem;
+  }
+  .single__title p {
+    font-size: 2rem;
+    margin-top: 1px;
+  }
+  .single__details.inner {
+    padding: 30px 10px;
   }
 }

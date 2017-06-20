@@ -1,10 +1,11 @@
 mixin loginForm()
     p Not registered yet? 
         a(href=`/register`) Sign Up →
-    form.form(action="/login" method="POST")
+    form(action="/login" method="POST" class="card")
         h2 Login
-        label(for="email") Email Address
-        input(type="email" placeholder="someone@example.com" name="email" required) 
-        label(for="password") Password
-        input(type="password" name="password" required)
-        input.button(type="submit" value="Log In →")
+        .form-contents
+            label(for="email") Email Address
+            input(type="email" placeholder="someone@example.com" name="email" required) 
+            label(for="password") Password
+            input(type="password" name="password" required)
+            input.button(type="submit" value="Log In →")
