@@ -13,6 +13,10 @@ body {
     .inner {
       padding: 2rem; } }
 
+.inner-landing {
+  max-width: 900px;
+  margin: 0 auto; }
+
 footer {
   margin-top: 100px;
   text-align: center;
@@ -1164,10 +1168,6 @@ section.hero {
 
 section.hero p {
   font-size: 3rem; }
-
-@media (max-width: 900px) {
-  .inner {
-    padding: 0; } }
 
 h2.no-mar {
   margin: 0;
