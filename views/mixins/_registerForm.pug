@@ -1,6 +1,8 @@
 mixin registerForm()
     p Already have an account? 
         a(href=`/login`) Log In →
+    p Make an account or use the test account
+    p <strong>Email</strong>: test@example.com | <strong>Password</strong>: test
     form(action="/register" method="POST" class="card")
         h2 Register
         .form-contents
